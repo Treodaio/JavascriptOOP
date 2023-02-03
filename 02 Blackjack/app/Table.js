@@ -5,9 +5,9 @@ export class Table {
   }
 
   showPlayerCard(card) {
-    this.playerArea.appendChild(card);
+    this.playerArea.appendChild(card.render());
   }
   showDealerCard(card) {
-    this.dealerArea.appendChild(card);
+    this.dealerArea.appendChild(card.render());
   }
 }
