@@ -3,12 +3,16 @@ export class Hand {
     this.cards = [];
   }
 
+  returnCardsQuantity() {
+    return this.cards.length;
+  }
+
   addCardToHand(card) {
     this.cards.push(card);
   }
 
   countCardsByWeight(weight) {
-    return this.cards.filter(card => card.weight == weight.length)
+    return this.cards.filter(card => card.weight == weight).length
   }
 
   getStrength() {
@@ -17,11 +21,11 @@ export class Hand {
     }
 
     const cardsValues = this.cards.map(card => {
-      if (['K', 'D', 'J'].includes(card.weight)) {
+      if (['K', 'Q', 'J'].includes(card.weight)) {
         return 10;
       }
 
-      if (this.cards.length == 2 && this.cards.weight == 'A') {
+      if (this.cards.length === 2 && card.weight === 'A') {
         return 11;
       }
 
@@ -32,7 +36,7 @@ export class Hand {
       return parseInt(card.weight);
     })
 
-    cardsValues.reduce((accumulator, value) => {
+    return cardsValues.reduce((accumulator, value) => {
       return parseInt(accumulator) + parseInt(value);
     })
   }
