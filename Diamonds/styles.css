@@ -1,6 +1,10 @@
+:root {
+  --scale-value: 1;
+}
+
+
 * {
   box-sizing: border-box;
-
 }
 
 *:focus {
@@ -29,7 +33,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(var(--scale-value));
   transform-origin: center;
   width: 640px;
   height: 480px;
