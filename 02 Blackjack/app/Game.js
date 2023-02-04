@@ -7,14 +7,16 @@ class Game {
     this.Player = new Player(playerName);
     this.dealer = new Player('Dealer');
     this.Table = table;
-    this.btnAdd = btnAdd.addEventListener('click', this.addCard);
+    this.btnAdd = btnAdd.addEventListener('click', () => { this.addCard(); });
     this.btnStay = btnStay;
     this.deck = new Deck();
     this.deck.shuffle();
   }
 
   addCard() {
-    console.log('działa');
+    const card = this.deck.pickOne();
+    this.Player.hand.addCardToHand(card);
+    this.Table.showPlayerCard(card);
   }
 
   run() {
