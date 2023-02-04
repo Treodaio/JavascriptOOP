@@ -1,3 +1,1 @@
-import { MainMenu } from './scripts/MainMenu.js';
-
-
+import { mainMenu } from './scripts/MainMenu.js';
