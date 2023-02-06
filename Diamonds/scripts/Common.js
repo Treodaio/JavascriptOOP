@@ -1,6 +1,6 @@
 export const SHOW_SCREEN = true;
 export const HIDE_SCREEN = false;
-export const HIDDEN_CLASS = 'hidden';
+export const CSS_HIDDEN_CLASS = 'hidden';
 
 export class Common {
   constructor(elementId) {
@@ -8,7 +8,7 @@ export class Common {
   }
 
   toggleElementVisibility(element, mode) {
-    mode === SHOW_SCREEN ? element.classList.remove(HIDDEN_CLASS) : element.classList.add(HIDDEN_CLASS);
+    mode === SHOW_SCREEN ? element.classList.remove(CSS_HIDDEN_CLASS) : element.classList.add(CSS_HIDDEN_CLASS);
   }
 
   bindToElement(ID) {
