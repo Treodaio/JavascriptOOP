@@ -1,7 +1,7 @@
-import { Common, HIDE_SCREEN } from "./Common.js";
+import { Common, HIDE_SCREEN, SHOW_SCREEN } from "./Common.js";
+import { canvas } from "./Canvas.js";
 
-
-const LEVEL_SELECT_ID = "js-level-select-screen";
+const HTML_LEVEL_SELECT_ID = "js-level-select-screen";
 const CSS_LEVEL_SELECT = 'level-select__button';
 
 const gameLevels = [
@@ -18,7 +18,7 @@ const gameLevels = [
 
 class LevelSelect extends Common {
   constructor() {
-    super(LEVEL_SELECT_ID);
+    super(HTML_LEVEL_SELECT_ID);
 
     gameLevels.forEach(gameLevel => {
       const button = this.createButtons(gameLevel.level)
@@ -38,6 +38,7 @@ class LevelSelect extends Common {
 
   handleLevelSelect(event) {
     this.toggleElementVisibility(this.element, HIDE_SCREEN);
+    this.toggleElementVisibility(canvas.element, SHOW_SCREEN);
   }
 
 }
