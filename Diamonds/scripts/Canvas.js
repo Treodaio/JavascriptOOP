@@ -1,4 +1,6 @@
-import { Common } from './Common.js'
+import { Common } from './Common.js';
+import { media } from './Media.js';
+
 export const CANVAS_WIDTH = 640;
 export const CANVAS_HEIGHT = 480;
 
@@ -18,6 +20,13 @@ class Canvas extends Common {
     this.context.fillStyle = 'white';
   }
 
+  drawGameOnCanvas() {
+    this.drawBackground();
+  }
+
+  drawBackground() {
+    this.context.drawImage(media.backgroundImage, 0, 0);
+  }
 
 }
 

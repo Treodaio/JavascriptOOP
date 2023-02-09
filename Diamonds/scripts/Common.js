@@ -4,6 +4,7 @@ export const CSS_HIDDEN_CLASS = 'hidden';
 
 export class Common {
   constructor(elementId) {
+    if (typeof (elementId) === 'undefined') return;
     this.element = this.bindToElement(elementId);
   }
 
