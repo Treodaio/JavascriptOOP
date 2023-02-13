@@ -2,7 +2,6 @@
   --scale-value: 1;
 }
 
-
 * {
   box-sizing: border-box;
 }
@@ -24,7 +23,6 @@ body {
   left: 0;
   bottom: 0;
   right: 0;
-
   justify-content: center;
   align-items: center;
 }
@@ -42,7 +40,6 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
-
 
 .game__layer {
   width: 100%;
