@@ -1,6 +1,12 @@
 import { gameLevels } from './levelsData.js';
 import { canvas } from './Canvas.js';
 import { Common, SHOW_SCREEN } from './Common.js';
+import { Diamond } from './Diamond.js';
+import { media } from './Media.js';
+
+
+export const GAME_BOARD_X_OFFSET = 40;
+export const GAME_BOARD_Y_OFFSET = -5;
 
 const gameState = {
   points: 120,
@@ -15,12 +21,14 @@ class Game extends Common {
   playLevel(level) {
     window.removeEventListener('dataLoaded', this.playLevel);
     const currentLevel = gameLevels[level - 1];
+    this.diamond = new Diamond(50, 50, 1, 1, 2, media.diamondsSprite);
     this.toggleElementVisibility(canvas.element, SHOW_SCREEN);
     this.animate();
   }
 
   animate() {
     canvas.drawGameOnCanvas(gameState);
+    this.diamond.draw();
     this.animationFrame = window.requestAnimationFrame(() => this.animate());
   }
 }
