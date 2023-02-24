@@ -4,10 +4,6 @@ import { Common, SHOW_SCREEN } from './Common.js';
 import { Diamond } from './Diamond.js';
 import { media } from './Media.js';
 
-
-export const GAME_BOARD_X_OFFSET = 40;
-export const GAME_BOARD_Y_OFFSET = -5;
-
 const gameState = {
   points: 120,
   getPlayerPoints: () => 0,
