@@ -23,9 +23,9 @@ class Canvas extends Common {
 
   drawGameOnCanvas(gameState) {
     this.drawBackground();
-    this.drawPointsToWin(gameState.points);
-    this.drawPlayerPoints(gameState.getPlayerPoints());
-    this.drawLeftMovement(gameState.getMovementLeft());
+    this.drawPointsToWin(gameState.pointsToWin);
+    this.drawPlayerPoints(gameState.playerPoints);
+    this.drawLeftMovement(gameState.leftMovement);
   }
 
   drawBackground() {

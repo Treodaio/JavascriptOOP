@@ -1,5 +1,5 @@
 import { Common, HIDE_SCREEN, SHOW_SCREEN } from "./Common.js";
-import { gameLevels } from "./levelsData.js";
+import { gameLevels } from "./gameConstants.js";
 import { canvas } from "./Canvas.js";
 import { loader } from "./Loader.js";
 import { game } from './Game.js';
@@ -33,7 +33,6 @@ class LevelSelect extends Common {
     this.toggleElementVisibility(canvas.element, SHOW_SCREEN);
     this.loadLevel(event.currentTarget.value);
   }
-
 
   loadLevel(level) {
     media.backgroundImage = loader.loadImage('./images/levelbackground.png');
