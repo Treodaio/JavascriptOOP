@@ -1,4 +1,5 @@
 import { canvas } from "./Canvas.js";
+import { SCALE_PROPERTY } from './MainMenu.js';
 
 class MouseController {
   constructor() {

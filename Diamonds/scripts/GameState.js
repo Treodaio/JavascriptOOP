@@ -23,6 +23,7 @@ export class GameState {
   get gameBoard() {
     return this.#gameBoard;
   }
+
   get pointsToWin() {
     return this.#pointsToWin;
   }
@@ -56,11 +57,11 @@ export class GameState {
   }
 
   decreasePointsMovement() {
-    this.#leftMovement++;
+    this.#leftMovement--;
   }
 
   increasePointsMovement() {
-    this.#leftMovement--;
+    this.#leftMovement++;
   }
 
   isPlayerWinner() {
