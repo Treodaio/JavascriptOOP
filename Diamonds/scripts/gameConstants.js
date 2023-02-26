@@ -4,6 +4,9 @@ export const EMPTY_BLOCK = 99;
 export const GAME_BOARD_X_OFFSET = 40;
 export const GAME_BOARD_Y_OFFSET = 20;
 
+export const DIAMOND_ARRAY_WIDTH = 8;
+export const DIAMOND_ARRAY_HEIGHT = DIAMOND_ARRAY_WIDTH + 1; // invisible line
+
 export const gameLevels = [
   {
     level: 1,
