@@ -1,8 +1,8 @@
-import { Common, SHOW_SCREEN, HIDE_SCREEN } from './Common.js';
+import { Common, SHOW_SCREEN, HIDE_SCREEN } from "./Common.js";
 
-const HTML_LOADER_ID = 'js-loading-screen';
-const HTML_LOAD_CURRENT_ID = 'js-loading-screen-current';
-const HTML_LOAD_TOTAL_ID = 'js-loading-screen-total';
+const HTML_LOADER_ID = "js-loading-screen";
+const HTML_LOAD_CURRENT_ID = "js-loading-screen-current";
+const HTML_LOAD_TOTAL_ID = "js-loading-screen-total";
 
 class Loader extends Common {
   constructor() {
@@ -23,7 +23,7 @@ class Loader extends Common {
     this.totalElement = this.totalCounter;
     const image = new Image();
     image.src = imageURL;
-    image.addEventListener('load', e => this.itemLoaded(e));
+    image.addEventListener("load", (e) => this.itemLoaded(e));
 
     return image;
   }
@@ -37,7 +37,7 @@ class Loader extends Common {
     if (this.loadedCounter === this.totalCounter) {
       this.resetCounters();
       this.toggleElementVisibility(this.element, HIDE_SCREEN);
-      window.dispatchEvent(new CustomEvent('dataLoaded'));
+      window.dispatchEvent(new CustomEvent("dataLoaded"));
     }
   }
 
@@ -47,6 +47,5 @@ class Loader extends Common {
     this.isAllLoaded = true;
   }
 }
-
 
 export const loader = new Loader();

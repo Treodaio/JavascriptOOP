@@ -1,7 +1,15 @@
-import { canvas } from './Canvas.js';
+import { canvas } from "./Canvas.js";
 
 export class Sprite {
-  constructor(x, y, width, height, spritesImage, numberOfSprites = 1, offset = { x: 1, y: 1 }) {
+  constructor(
+    x,
+    y,
+    width,
+    height,
+    spritesImage,
+    numberOfSprites = 1,
+    offset = { x: 1, y: 1 }
+  ) {
     this.alpha = 255;
     this.height = height;
     this.numberOfSprites = numberOfSprites;

@@ -1,26 +1,32 @@
-import { Common, HIDE_SCREEN, SHOW_SCREEN } from './Common.js';
-import { levelSelect } from './LevelSelect.js';
+import { Common, HIDE_SCREEN, SHOW_SCREEN } from "./Common.js";
+import { levelSelect } from "./LevelSelect.js";
 import { CANVAS_HEIGHT, CANVAS_WIDTH } from "./Canvas.js";
 
-const SCALE_PROPERTY = '--scale-value';
-const HTML_START_SCREEN_ID = 'js-start-screen';
-const HTML_START_SCREEN_NEW_GAME_BUTTON_ID = 'js-start-game';
-const HTML_START_SCREEN_SETTINGS_BUTTON_ID = 'js-settings-button';
+const SCALE_PROPERTY = "--scale-value";
+const HTML_START_SCREEN_ID = "js-start-screen";
+const HTML_START_SCREEN_NEW_GAME_BUTTON_ID = "js-start-game";
+const HTML_START_SCREEN_SETTINGS_BUTTON_ID = "js-settings-button";
 
 class MainMenu extends Common {
   constructor() {
     super(HTML_START_SCREEN_ID);
     this.bindToGameElements();
     this.resizeGameWindow();
-    window.addEventListener('resize', this.resizeGameWindow);
+    window.addEventListener("resize", this.resizeGameWindow);
   }
 
   bindToGameElements() {
-    const gameStartButton = this.bindToElement(HTML_START_SCREEN_NEW_GAME_BUTTON_ID);
-    const gameSettingsButton = this.bindToElement(HTML_START_SCREEN_SETTINGS_BUTTON_ID);
+    const gameStartButton = this.bindToElement(
+      HTML_START_SCREEN_NEW_GAME_BUTTON_ID
+    );
+    const gameSettingsButton = this.bindToElement(
+      HTML_START_SCREEN_SETTINGS_BUTTON_ID
+    );
 
-    gameStartButton.addEventListener('click', () => this.showLevel());
-    gameSettingsButton.addEventListener('click', () => this.showSettingsScreen());
+    gameStartButton.addEventListener("click", () => this.showLevel());
+    gameSettingsButton.addEventListener("click", () =>
+      this.showSettingsScreen()
+    );
   }
 
   showLevel() {
@@ -29,7 +35,7 @@ class MainMenu extends Common {
   }
 
   showSettingsScreen() {
-    console.log('settings');
+    console.log("settings");
   }
 
   resizeGameWindow() {
@@ -39,4 +45,4 @@ class MainMenu extends Common {
   }
 }
 
-export const mainMenu = new MainMenu(); 
+export const mainMenu = new MainMenu();

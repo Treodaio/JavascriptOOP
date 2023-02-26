@@ -1,5 +1,5 @@
-import { Sprite } from './Sprite.js';
-import { GAME_BOARD_X_OFFSET, GAME_BOARD_Y_OFFSET } from './gameConstants.js';
+import { Sprite } from "./Sprite.js";
+import { GAME_BOARD_X_OFFSET, GAME_BOARD_Y_OFFSET } from "./gameConstants.js";
 
 export const DIAMOND_SIZE = 48;
 
@@ -11,8 +11,8 @@ export class Diamond extends Sprite {
   constructor(x, y, row, column, kind, diamondSpriteImage) {
     const offset = {
       x: GAME_BOARD_X_OFFSET,
-      y: GAME_BOARD_Y_OFFSET
-    }
+      y: GAME_BOARD_Y_OFFSET,
+    };
     super(
       x,
       y,

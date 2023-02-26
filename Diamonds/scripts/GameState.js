@@ -5,6 +5,8 @@ export class GameState {
   #pointsToWin = null;
   #level = null;
   #gameBoard = null;
+  #isSwaping = false;
+  #isMoving = false;
 
   constructor(leftMovement, playerPoints, pointsToWin, level, diamonds, diamondSpriteImage) {
     this.#leftMovement = leftMovement;
@@ -35,6 +37,22 @@ export class GameState {
 
   set playerPoints(points) {
     this.#playerPoints += points;
+  }
+
+  get isSwaping() {
+    return this.#isSwaping;
+  }
+
+  set isSwaping(value) {
+    this.#isSwaping = value;
+  }
+
+  get isMoving() {
+    return this.#isMoving;
+  }
+
+  set isMoving(value) {
+    this.#isMoving = value;
   }
 
   decreasePointsMovement() {
