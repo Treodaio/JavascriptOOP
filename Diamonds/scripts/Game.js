@@ -1,7 +1,9 @@
 import {
   gameLevels, GAME_BOARD_X_OFFSET, GAME_BOARD_Y_OFFSET,
   DIAMOND_ARRAY_WIDTH, DIAMOND_ARRAY_HEIGHT,
-  SWAPPING_DIAMOND_SPEED
+  SWAPPING_DIAMOND_SPEED,
+  EMPTY_BLOCK,
+  DIAMOND_ARRAY_LAST_ELEMENT
 } from "./gameConstants.js";
 import { canvas } from "./Canvas.js";
 import { Common, SHOW_SCREEN } from "./Common.js";
@@ -86,6 +88,42 @@ class Game extends Common {
       this.gameState.decreasePointsMovement();
     }
     mouseController.clicked = false;
+  }
+
+  findMatches() {
+    this.gameState.gameBoard.forEach((diamond, index, diamondsArray) => {
+      //check rows
+      if (diamond.kind === EMPTY_BLOCK || index < DIAMOND_ARRAY_WIDTH || index > DIAMOND_ARRAY_LAST_ELEMENT) {
+        return;
+      }
+
+      if (
+        diamond.kind === diamondsArray[index - 1].kind &&
+        diamond.kind === diamondsArray[index + 1].kind
+      ) {
+
+        //check that they on the same row.
+        if (Math.floor(index - 1) / DIAMOND_ARRAY_WIDTH === Math.floor(index + 1) / DIAMOND_ARRAY_WIDTH) {
+          for (let i = -1; i <= 1; i++) {
+            diamondsArray[index + i].match++;
+          }
+        }
+      }
+      //check columns
+      if (
+        index >= DIAMONDS_ARRAY_WIDTH &&
+        index < DIAMOND_ARRAY_LAST_ELEMENT - DIAMOND_ARRAY_WIDTH + 1 &&
+        diamond.kind === diamondsArray[index - DIAMOND_ARRAY_WIDTH].kind &&
+        diamond.kind === diamondsArray[index + DIAMOND_ARRAY_WIDTH].kind
+      ) {
+        if ((index - DIAMOND_ARRAY_WIDTH) % DIAMOND_ARRAY_WIDTH === (index + DIAMOND_ARRAY_WIDTH) % DIAMOND_ARRAY_WIDTH) {
+          for (let i = -DIAMOND_ARRAY_WIDTH; i <= DIAMOND_ARRAY_WIDTH; i += DIAMOND_ARRAY_WIDTH) {
+            diamonds[index + i].match++;
+          }
+        }
+      }
+
+    });
   }
 
   swapDiamonds() {

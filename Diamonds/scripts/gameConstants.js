@@ -6,6 +6,7 @@ export const GAME_BOARD_Y_OFFSET = 20;
 
 export const DIAMOND_ARRAY_WIDTH = 8;
 export const DIAMOND_ARRAY_HEIGHT = DIAMOND_ARRAY_WIDTH + 1; // invisible line
+export const DIAMOND_ARRAY_LAST_ELEMENT = DIAMOND_ARRAY_WIDTH * DIAMOND_ARRAY_HEIGHT - 1;
 export const SWAPPING_DIAMOND_SPEED = 8;
 
 
