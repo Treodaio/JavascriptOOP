@@ -3,8 +3,8 @@ import {
   DIAMOND_ARRAY_WIDTH, DIAMOND_ARRAY_HEIGHT,
   SWAPPING_DIAMOND_SPEED,
   EMPTY_BLOCK,
-  DIAMOND_ARRAY_LAST_ELEMENT
-
+  DIAMOND_ARRAY_LAST_ELEMENT,
+  TRANSPARENCY_SPEED
 } from "./gameConstants.js";
 import { canvas } from "./Canvas.js";
 import { Common, SHOW_SCREEN } from "./Common.js";
@@ -40,6 +40,7 @@ class Game extends Common {
     this.handleMouseClick();
     this.findMatches();
     this.moveDiamonds();
+    this.hideAnimation();
     this.countScores();
     this.revertSwap();
     this.clearMatched();
@@ -161,6 +162,20 @@ class Game extends Common {
         this.gameState.isMoving = true;
       }
     });
+  }
+
+  hideAnimation() {
+    if (this.gameState.isMoving) {
+      return;
+    }
+
+    this.gameState.gameBoard.forEach(diamond => {
+      if (diamond.match && diamond.alpha > 10) {
+        diamond.alpha -= TRANSPARENCY_SPEED;
+        this.gameState.isMoving = true;
+      }
+    });
+
   }
 
   countScores() {
