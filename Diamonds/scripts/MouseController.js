@@ -3,10 +3,11 @@ import { SCALE_PROPERTY } from './MainMenu.js';
 
 class MouseController {
   constructor() {
-    this.x = null;
-    this.y = null;
+    this.x = 0;
+    this.y = 0;
     this.state = 0;
     this.clicked = false;
+
     this.firstClick = {
       x: null,
       y: null

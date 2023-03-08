@@ -36,10 +36,6 @@ export class GameState {
     return this.#level;
   }
 
-  set playerPoints(points) {
-    this.#playerPoints += points;
-  }
-
   get isSwaping() {
     return this.#isSwaping;
   }
@@ -54,6 +50,10 @@ export class GameState {
 
   set isMoving(value) {
     this.#isMoving = value;
+  }
+
+  increasePlayerPoints(points) {
+    this.#playerPoints += points;
   }
 
   decreasePointsMovement() {
