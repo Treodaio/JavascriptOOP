@@ -44,9 +44,9 @@ class Game extends Common {
     this.countScores();
     this.revertSwap();
     this.clearMatched();
+    this.checkEndOfTheGame();
     canvas.drawGameOnCanvas(this.gameState);
     this.gameState.gameBoard.forEach((diamond) => diamond.draw());
-    this.animationFrame = window.requestAnimationFrame(() => this.animate());
   }
 
   handleMouseState() {
@@ -188,7 +188,6 @@ class Game extends Common {
 
   revertSwap() {
     if (this.gameState.isSwaping && !this.gameState.isMoving) {
-      // debugger;
       if (!this.scores) {
         this.swapDiamonds();
         this.gameState.increasePointsMovement();
@@ -230,7 +229,25 @@ class Game extends Common {
         diamond.alpha = 255;
       }
     });
-  }
+  };
+
+  checkEndOfTheGame() {
+    if (
+      !this.gameState.isMoving &&
+      !this.gameState.isSwaping &&
+      !this.gameState.leftMovement
+    ) {
+      const isPlayerWinner = this.gameState.isPlayerWinner();
+
+      if (isPlayerWinner && gameLevels[this.gameState.level]) {
+        console.log('Kolejny level odblokowany');
+      }
+      console.log('Jeżeli gracz ma więcej punktów to aktualizacja high scores');
+
+    } else {
+      this.animationFrame = window.requestAnimationFrame(() => this.animate());
+    }
+  };
 
   swap(firstDiamond, secondDiamond) {
     [
