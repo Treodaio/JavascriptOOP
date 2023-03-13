@@ -7,12 +7,12 @@ import {
   TRANSPARENCY_SPEED
 } from "./gameConstants.js";
 import { canvas } from "./Canvas.js";
-import { Common, SHOW_SCREEN } from "./Common.js";
+import { Common, HIDE_SCREEN, SHOW_SCREEN } from "./Common.js";
 import { media } from "./Media.js";
 import { GameState } from "./GameState.js";
 import { mouseController } from "./MouseController.js";
 import { DIAMOND_SIZE, NUMBER_OF_DIAMOND_TYPES } from "./Diamond.js";
-
+import { resultScreen } from "./ResultScreen.js";
 
 class Game extends Common {
   constructor() {
@@ -232,6 +232,7 @@ class Game extends Common {
   };
 
   checkEndOfTheGame() {
+
     if (
       !this.gameState.isMoving &&
       !this.gameState.isSwaping &&
@@ -240,7 +241,7 @@ class Game extends Common {
       const isPlayerWinner = this.gameState.isPlayerWinner();
 
       if (isPlayerWinner && gameLevels[this.gameState.level]) {
-        console.log('Kolejny level odblokowany');
+        resultScreen.viewResultScreen(isPlayerWinner, this.gameState.playerPoints, this.gameState.level);
       }
       console.log('Jeżeli gracz ma więcej punktów to aktualizacja high scores');
 
