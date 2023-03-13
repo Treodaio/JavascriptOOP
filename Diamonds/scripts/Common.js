@@ -18,7 +18,7 @@ export class Common {
     const element = document.getElementById(ID);
 
     if (!element) {
-      throw new Error(`Nie znaleziono elementu o ID ${elementId}`);
+      throw new Error(`Nie znaleziono elementu o ID ${ID}`);
     }
     return element;
   }
