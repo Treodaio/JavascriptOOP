@@ -1,4 +1,7 @@
-import { Common, SHOW_SCREEN } from './Common.js';
+import { Common, HIDE_SCREEN, SHOW_SCREEN } from './Common.js';
+import { mainMenu } from './MainMenu.js';
+import { canvas } from './Canvas.js';
+
 
 const CSS_GAME_WIN = "end-screen--is-win";
 const HTML_END_SCREEN = "js-game-result";
@@ -22,14 +25,11 @@ class ResultScreen extends Common {
     const backButtonHtml = this.bindToElement(HTML_BUTTON_BACKLEVEL);
     const restartLevelHtml = this.bindToElement(HTML_BUTTON_RESTART);
 
-    backButtonHtml.addEventListener('click', () => {
-      console.log('click');
-    });
+    backButtonHtml.addEventListener('click', () => { this.backButtonClick() });
     restartLevelHtml.addEventListener('click', () => {
       console.log('click');
     });
   }
-
 
   viewResultScreen(isGameWin, playerPoints, level) {
     if (isGameWin) {
@@ -41,6 +41,12 @@ class ResultScreen extends Common {
     this.toggleElementVisibility(this.element, SHOW_SCREEN);
     this.resultTextHtml.textContent = isGameWin ? 'Wygrałeś!' : 'Przegrałeś';
     this.userPointsHtml.textContent = String(playerPoints);
+  }
+
+  backButtonClick() {
+    this.toggleElementVisibility(canvas.element, HIDE_SCREEN);
+    this.toggleElementVisibility(this.element, HIDE_SCREEN);
+    mainMenu.showLevel();
   }
 }
 
