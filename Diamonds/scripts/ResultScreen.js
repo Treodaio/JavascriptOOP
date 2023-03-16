@@ -2,6 +2,8 @@ import { Common, HIDE_SCREEN, SHOW_SCREEN } from './Common.js';
 import { mainMenu } from './MainMenu.js';
 import { canvas } from './Canvas.js';
 import { userData } from './UserDataLocalStorage.js';
+import { levelSelect } from './LevelSelect.js';
+import { game } from './Game.js';
 
 
 const CSS_GAME_WIN = "end-screen--is-win";
@@ -26,10 +28,8 @@ class ResultScreen extends Common {
     const backButtonHtml = this.bindToElement(HTML_BUTTON_BACKLEVEL);
     const restartLevelHtml = this.bindToElement(HTML_BUTTON_RESTART);
 
-    backButtonHtml.addEventListener('click', () => { this.backButtonClick() });
-    restartLevelHtml.addEventListener('click', () => {
-      console.log('click');
-    });
+    backButtonHtml.addEventListener('click', () => { this.backButtonClick(); });
+    restartLevelHtml.addEventListener('click', () => { this.restartLevelClick(); });
   }
 
   viewResultScreen(isGameWin, playerPoints, level) {
@@ -49,6 +49,11 @@ class ResultScreen extends Common {
     this.toggleElementVisibility(canvas.element, HIDE_SCREEN);
     this.toggleElementVisibility(this.element, HIDE_SCREEN);
     mainMenu.showLevel();
+  }
+
+  restartLevelClick() {
+    this.toggleElementVisibility(this.element, HIDE_SCREEN);
+    levelSelect.loadLevel(game.gameState.level);
   }
 }
 
