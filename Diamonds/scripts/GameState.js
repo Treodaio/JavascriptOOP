@@ -1,5 +1,6 @@
 import { Diamond } from './Diamond.js';
-export class GameState {
+import { DIAMOND_ARRAY_WIDTH } from './gameConstants.js';
+export class GameSWtate {
   #leftMovement = null;
   #playerPoints = null;
   #pointsToWin = null;
@@ -14,6 +15,25 @@ export class GameState {
     this.#pointsToWin = pointsToWin;
     this.#level = level;
     this.#gameBoard = diamonds.map(({ x, y, row, column, kind }) => new Diamond(x, y, row, column, kind, diamondSpriteImage));
+  }
+
+  mixDiamonds() {
+    const mixedDiamonds = this.gameBoard.splice(0, DIAMOND_ARRAY_WIDTH);
+    let index = DIAMOND_ARRAY_WIDTH;
+
+    while (this.gameBoard.length) {
+      const randomNumber = Math.floor(Math.random() * this.gameBoard.length);
+      const nextElementToMix = this.gameBoard.splice(randomNumber, 1)[0];
+
+      const newElement = {
+        ...nextElementToMix,
+        row: index % DIAMOND_ARRAY_WIDTH,
+        column: Math.floor(index / DIAMOND_ARRAY_WIDTH),
+      };
+      index++;
+      mixedDiamonds.push(newElement);
+    }
+    this.#gameBoard.push(...mixedDiamonds);
   }
 
   get leftMovement() {
@@ -66,9 +86,5 @@ export class GameState {
 
   isPlayerWinner() {
     return this.#playerPoints >= this.#pointsToWin ? true : false;
-  }
-
-  mixDiamonds() {
-
   }
 }
