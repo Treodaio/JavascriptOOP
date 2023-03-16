@@ -1,6 +1,6 @@
 import { Diamond } from './Diamond.js';
 import { DIAMOND_ARRAY_WIDTH } from './gameConstants.js';
-export class GameSWtate {
+export class GameState {
   #leftMovement = null;
   #playerPoints = null;
   #pointsToWin = null;
