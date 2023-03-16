@@ -67,4 +67,8 @@ export class GameState {
   isPlayerWinner() {
     return this.#playerPoints >= this.#pointsToWin ? true : false;
   }
+
+  mixDiamonds() {
+
+  }
 }
