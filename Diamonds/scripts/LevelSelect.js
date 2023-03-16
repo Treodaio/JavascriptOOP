@@ -12,26 +12,28 @@ const CSS_LEVEL_SELECT = "level-select__button";
 class LevelSelect extends Common {
   constructor() {
     super(HTML_LEVEL_SELECT_ID);
-
-    gameLevels.some((gameLevel) => {
-      let isActive = userData.checkAvailabilityLevel(gameLevel.level);
-      if (!isActive) {
-        return true;
-      } else {
-        const button = this.createButtons(gameLevel.level);
-        this.element.appendChild(button);
-      }
-    });
   }
 
-  createButtons(level) {
+  createButtons() {
+    while (this.element.firstChild) {
+      this.element.removeChild(this.element.firstChild);
+    }
+
+    gameLevels.some(gameLevel => this.createButton(gameLevel.level));
+  }
+
+  createButton(level) {
+    if (!userData.checkAvailabilityLevel(level)) {
+      return true;
+    }
+
     const button = document.createElement("button");
     button.value = level;
     button.type = "button";
     button.textContent = level;
     button.classList.add(CSS_LEVEL_SELECT);
     button.addEventListener("click", (e) => this.handleLevelSelect(e));
-    return button;
+    this.element.appendChild(button);
   }
 
   handleLevelSelect(event) {

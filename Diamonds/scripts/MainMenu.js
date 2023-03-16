@@ -30,6 +30,8 @@ class MainMenu extends Common {
   }
 
   showLevel() {
+    debugger;
+    levelSelect.createButtons();
     this.toggleElementVisibility(this.element, HIDE_SCREEN);
     levelSelect.toggleElementVisibility(levelSelect.element, SHOW_SCREEN);
   }
