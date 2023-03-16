@@ -4,6 +4,7 @@ import { canvas } from "./Canvas.js";
 import { loader } from "./Loader.js";
 import { game } from "./Game.js";
 import { media } from "./Media.js";
+import { userData } from "./UserDataLocalStorage.js";
 
 const HTML_LEVEL_SELECT_ID = "js-level-select-screen";
 const CSS_LEVEL_SELECT = "level-select__button";
@@ -12,9 +13,14 @@ class LevelSelect extends Common {
   constructor() {
     super(HTML_LEVEL_SELECT_ID);
 
-    gameLevels.forEach((gameLevel) => {
-      const button = this.createButtons(gameLevel.level);
-      this.element.appendChild(button);
+    gameLevels.some((gameLevel) => {
+      let isActive = userData.checkAvailabilityLevel(gameLevel.level);
+      if (!isActive) {
+        return true;
+      } else {
+        const button = this.createButtons(gameLevel.level);
+        this.element.appendChild(button);
+      }
     });
   }
 
