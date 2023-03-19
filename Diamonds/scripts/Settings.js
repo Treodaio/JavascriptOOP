@@ -1,4 +1,5 @@
 import { Common, HIDE_SCREEN } from "./Common.js";
+import { media } from "./Media.js";
 
 const HTML_SETTINGS_SCREEN = "js-settings-screen";
 const HTML_EXIT_SETTINGS = "js-settings-screen-exit-button";
@@ -25,7 +26,13 @@ class Settings extends Common {
     const volumeIncreaseButton = this.bindToElement(HTML_SOUND_INCREASE);
     const volumeDecreaseButton = this.bindToElement(HTML_SOUND_DECREASE);
 
-    exitButton.addEventListener('click', () => { this.hideSettingsScreen() });
+    exitButton.addEventListener('click', () => { this.hideSettingsScreen(); });
+    switchMusicButton.addEventListener('click', () => { media.toggleMusicOnOff(); });
+    switchSoundsButton.addEventListener('click', () => { media.toggleSoundOnOff(); });
+    musicIncreaseButton.addEventListener('click', () => { media.increaseMusicVolume(); });
+    musicDecreaseButton.addEventListener('click', () => { media.decreaseMusicVolume(); });
+    volumeDecreaseButton.addEventListener('click', () => { media.decreaseSoundVolume(); });
+    volumeIncreaseButton.addEventListener('click', () => { media.increaseSoundVolume(); });
   }
 
   hideSettingsScreen() {

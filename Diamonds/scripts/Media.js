@@ -19,7 +19,9 @@ class Media {
     if (this.musicVolume > 1) {
       this.musicVolume = 1;
     }
-    this.#backgroundMusic.volume = this.musicVolume;
+    if (this.#backgroundMusic) {
+      this.#backgroundMusic.volume = this.musicVolume;
+    }
   }
 
   decreaseMusicVolume() {
@@ -27,7 +29,9 @@ class Media {
     if (this.musicVolume <= 0.1) {
       this.musicVolume = 0.1;
     }
-    this.#backgroundMusic.volume = this.musicVolume;
+    if (this.#backgroundMusic) {
+      this.#backgroundMusic.volume = this.musicVolume;
+    }
   }
 
   increaseSoundVolume() {
@@ -35,7 +39,9 @@ class Media {
     if (this.soundVolume > 1) {
       this.soundVolume = 1;
     }
-    this.#swapSound.volume = this.soundVolume;
+    if (this.#swapSound) {
+      this.#swapSound.volume = this.soundVolume;
+    }
   }
 
   decreaseSoundVolume() {
@@ -43,20 +49,26 @@ class Media {
     if (this.soundVolume <= 0.1) {
       this.soundVolume = 0.1;
     }
-    this.#swapSound.volume = this.soundVolume;
+    if (this.#swapSound) {
+      this.#swapSound.volume = this.soundVolume;
+    }
   }
 
   playBackgroundMusic() {
     if (!this.allowedMusic) {
       return;
     }
-    this.#backgroundMusic.loop = true;
-    this.#backgroundMusic.play();
+    if (this.#backgroundMusic) {
+      this.#backgroundMusic.loop = true;
+      this.#backgroundMusic.play();
+    }
   }
 
   stopBackgroundMusic() {
-    this.#backgroundMusic.pause();
-    this.#backgroundMusic.currentTime = 0;
+    if (this.#backgroundMusic) {
+      this.#backgroundMusic.pause();
+      this.#backgroundMusic.currentTime = 0;
+    }
   }
 
   playSwapSound() {
@@ -73,6 +85,15 @@ class Media {
     } else {
       this.allowedMusic = true;
       this.playBackgroundMusic();
+    }
+  }
+
+  toggleSoundOnOff() {
+    if (this.allowedSound) {
+      this.allowedSound = false;
+
+    } else {
+      this.allowedSound = true;
     }
   }
 
