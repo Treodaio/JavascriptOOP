@@ -56,6 +56,7 @@ class Media {
 
   stopBackgroundMusic() {
     this.#backgroundMusic.pause();
+    this.#backgroundMusic.currentTime = 0;
   }
 
   playSwapSound() {

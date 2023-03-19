@@ -45,6 +45,7 @@ class ResultScreen extends Common {
     this.userPointsHtml.textContent = String(playerPoints);
     this.highScoresHtml.textContent = String(userData.getHighScores(level));
     media.stopBackgroundMusic();
+    media.isInLevel = false;
   }
 
   backButtonClick() {

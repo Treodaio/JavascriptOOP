@@ -49,7 +49,7 @@ class LevelSelect extends Common {
       media.backgroundMusic &&
       media.swapSound
     ) {
-      window.addEventListener("dataLoaded", game.playLevel(level));
+      game.playLevel(level);
       return;
     }
     if (!media.diamondsSprite) {
