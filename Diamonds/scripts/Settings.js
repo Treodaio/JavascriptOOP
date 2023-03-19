@@ -22,8 +22,8 @@ class Settings extends Common {
     const switchSoundsButton = this.bindToElement(HTML_SOUND_ON_OFF);
     const musicIncreaseButton = this.bindToElement(HTML_VOLUME_INCREASE);
     const musicDecreaseButton = this.bindToElement(HTML_VOLUME_DECREASE);
-    const volumeIncreaseButton = this.bindToElement(HTML_VOLUME_INCREASE);
-    const volumeDecreaseButton = this.bindToElement(HTML_VOLUME_DECREASE);
+    const volumeIncreaseButton = this.bindToElement(HTML_SOUND_INCREASE);
+    const volumeDecreaseButton = this.bindToElement(HTML_SOUND_DECREASE);
 
     exitButton.addEventListener('click', () => { this.hideSettingsScreen() });
   }
