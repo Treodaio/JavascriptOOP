@@ -4,6 +4,7 @@ import { canvas } from './Canvas.js';
 import { userData } from './UserDataLocalStorage.js';
 import { levelSelect } from './LevelSelect.js';
 import { game } from './Game.js';
+import { media } from './Media.js';
 
 
 const CSS_GAME_WIN = "end-screen--is-win";
@@ -43,6 +44,7 @@ class ResultScreen extends Common {
     this.resultTextHtml.textContent = isGameWin ? 'Wygrałeś!' : 'Przegrałeś';
     this.userPointsHtml.textContent = String(playerPoints);
     this.highScoresHtml.textContent = String(userData.getHighScores(level));
+    media.stopBackgroundMusic();
   }
 
   backButtonClick() {

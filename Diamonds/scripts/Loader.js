@@ -28,6 +28,16 @@ class Loader extends Common {
     return image;
   }
 
+  loadSound(soundURL) {
+    this.toggleElementVisibility(this.element, SHOW_SCREEN);
+    this.isAllLoaded = false;
+    this.totalCounter++;
+    const audio = new Audio();
+    audio.addEventListener('canplaythrough', event => this.itemLoaded(event), false);
+    audio.src = soundURL;
+    return audio;
+  }
+
   itemLoaded(event) {
     event.target.removeEventListener(event.type, this.itemLoaded, false);
     this.loadedCounter++;

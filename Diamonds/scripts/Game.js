@@ -7,7 +7,7 @@ import {
   TRANSPARENCY_SPEED
 } from "./gameConstants.js";
 import { canvas } from "./Canvas.js";
-import { Common, HIDE_SCREEN, SHOW_SCREEN } from "./Common.js";
+import { Common, SHOW_SCREEN } from "./Common.js";
 import { media } from "./Media.js";
 import { GameState } from "./GameState.js";
 import { mouseController } from "./MouseController.js";
@@ -37,6 +37,7 @@ class Game extends Common {
   }
 
   animate() {
+    media.playBackgroundMusic();
     this.handleMouseState();
     this.handleMouseClick();
     this.findMatches();
@@ -91,6 +92,8 @@ class Game extends Common {
         return;
       }
       this.swapDiamonds();
+      media.playSwapSound();
+      media.playBackgroundMusic();
       this.gameState.isSwaping = true;
       this.gameState.decreasePointsMovement();
       mouseController.state = 0;
