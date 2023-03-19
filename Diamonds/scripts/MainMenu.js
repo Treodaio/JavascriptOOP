@@ -1,6 +1,7 @@
 import { Common, HIDE_SCREEN, SHOW_SCREEN } from "./Common.js";
 import { levelSelect } from "./LevelSelect.js";
 import { CANVAS_HEIGHT, CANVAS_WIDTH } from "./Canvas.js";
+import { settings } from "./Settings.js";
 
 export const SCALE_PROPERTY = "--scale-value";
 const HTML_START_SCREEN_ID = "js-start-screen";
@@ -24,19 +25,17 @@ class MainMenu extends Common {
     );
 
     gameStartButton.addEventListener("click", () => this.showLevel());
-    gameSettingsButton.addEventListener("click", () =>
-      this.showSettingsScreen()
-    );
+    gameSettingsButton.addEventListener("click", () => this.showSettingsScreen());
   }
 
   showLevel() {
     levelSelect.createButtons();
     this.toggleElementVisibility(this.element, HIDE_SCREEN);
-    levelSelect.toggleElementVisibility(levelSelect.element, SHOW_SCREEN);
+    this.toggleElementVisibility(levelSelect.element, SHOW_SCREEN);
   }
 
   showSettingsScreen() {
-    console.log("settings");
+    this.toggleElementVisibility(settings.element, SHOW_SCREEN);
   }
 
   resizeGameWindow() {
